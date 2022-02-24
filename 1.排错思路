@@ -1,0 +1,16 @@
+问题：bean不存在
+
+步骤：
+1.查看这个bean注入是否成功！ ok
+2.Junit单元测试，看我们的代码是否能够查询出来结构！  ok
+3.问题，一定不在我们的底层，是spring出了问题！
+4.SpringMVC，整合的时候没调用到我们的service层的bean；
+    1.applicationContext.xml没有注入bean
+    2.web.xml中，我们也绑定过配置文件！发现问题，我们配置的是Spring-mvc.xml
+       这里面确实没有 service bean，所以报空指针
+
+
+自己的思考：
+首先我第一个错报的是 我的 <mvc:annotation-driven/> 错误了 然后我找了网上发现可能是配置问题 修改后 成功 但是还有错误。
+就是和狂神一样的错误  然后 因为报的错说bookController错误创建 不能找到bookService 那就是怀疑是不是 没注入 然后听狂神一说 应该就是web.xml
+配没有把所有的都导入  因为dispatcherServlet是前端控制器设计模式的实现，提供SpringWebMVC的集中访问点，负责 职责的分派。
