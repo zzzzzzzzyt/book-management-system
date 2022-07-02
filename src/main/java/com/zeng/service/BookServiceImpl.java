@@ -5,11 +5,12 @@ import com.zeng.pojo.Books;
 
 import java.util.List;
 
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
     //service调dao层 ：组合Dao层
 
     private BookMapper bookMapper;
+
     public void setBookMapper(BookMapper bookMapper) {
         this.bookMapper = bookMapper;
     }
